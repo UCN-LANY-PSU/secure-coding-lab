@@ -1,0 +1,17 @@
+{
+  "name": "sqlinjection_nodeexpress",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
+  }
+}
