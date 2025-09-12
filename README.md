@@ -19,7 +19,7 @@ At give praktisk erfaring med, hvordan usikker håndtering af brugerinput kan f�
 ## Opgave
 
 1. I dette repository findes kodeeksempler i **Node.js/Express** og **ASP.NET Core**.  
-2. I får udleveret en færdig database (`books.db`).  
+2. Koden genererer en færdig database (`books.db`). Hvis i ødelægger den, skal den bare slettes, så oprettes en ny ved næste kørsel.
 3. Start med at læse koden og identificér, hvorfor den er sårbar.  
 4. Ret koden, så den bruger **parameteriserede forespørgsler** i stedet for at bygge SQL-strings direkte.  
 5. Tilføj evt. en simpel inputvalidering (fx: søgeterm skal være 2–50 tegn).  
