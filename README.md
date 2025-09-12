@@ -8,7 +8,7 @@
 
 At give praktisk erfaring med, hvordan usikker håndtering af brugerinput kan føre til SQL Injection, og hvordan man kan forebygge det gennem *parameteriserede forespørgsler* og gode designvalg.  
 
-Øvelsen understøtter læringsmålene i faget *Sikkerhed for udviklere*【193】, hvor de studerende skal kunne:
+Øvelsen understøtter læringsmålene i faget *Sikkerhed for udviklere*, hvor de studerende skal kunne:
 
 - Identificere og håndtere sårbarheder i programmer  
 - Anvende security design principles inkl. *security by design*  
@@ -25,7 +25,7 @@ At give praktisk erfaring med, hvordan usikker håndtering af brugerinput kan f�
 5. Tilføj evt. en simpel inputvalidering (fx: søgeterm skal være 2–50 tegn).  
 6. Test jeres løsning:  
    - Normal søgning (fx `Kill`)  
-   - Ondsindet input (fx `' OR '1'='1' --`)  
+   - Tautologisk input (fx `' OR '1'='1' --`)  
    - UNION-angreb (fx `' UNION ALL SELECT username, password FROM users --`)  
    - Diskutér forskellen på output i usikker vs. sikker version  
 
@@ -48,7 +48,7 @@ At give praktisk erfaring med, hvordan usikker håndtering af brugerinput kan f�
 
 ---
 
-## Læringsmål (kobling til faget *Sikkerhed for udviklere*)【193】
+## Læringsmål (kobling til faget *Sikkerhed for udviklere*)
 
 Efter øvelsen skal du kunne:
 
@@ -73,4 +73,3 @@ Disse payloads kan bruges i den **usikre version** af koden.
 
 👉 Husk: **Parameterisering** betyder, at input behandles som *data* og aldrig kan ændre SQL-strukturen.
 
----
