@@ -25,14 +25,31 @@ using (var scope = app.Services.CreateScope())
           author TEXT NOT NULL
         );
     """);
-    var hasAny = db.ExecuteScalar<int>("SELECT COUNT(1) FROM books");
-    if (hasAny == 0)
+    var hasAnyBooks = db.ExecuteScalar<int>("SELECT COUNT(1) FROM books");
+    if (hasAnyBooks == 0)
     {
         db.Execute("INSERT INTO books (title, author) VALUES (@t,@a)",
             new[] {
                 new { t = "The Great Gatsby", a = "F. Scott Fitzgerald" },
                 new { t = "To Kill a Mockingbird", a = "Harper Lee" },
                 new { t = "1984", a = "George Orwell" }
+            });
+    }
+    db.Execute("""
+        CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY,
+          username TEXT NOT NULL,
+          password_hash TEXT NOT NULL
+        );
+    """);
+    var hasAnyUsers = db.ExecuteScalar<int>("SELECT COUNT(1) FROM users");
+    if (hasAnyUsers == 0)
+    {
+        db.Execute("INSERT INTO users (username, password_hash) VALUES (@t,@a)",
+            new[] {
+                new { t = "admin", a = "password123" },
+                new { t = "alice", a = "super_strong_password" },
+                new { t = "bob", a = "bobspassword" }
             });
     }
 }
