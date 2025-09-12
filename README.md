@@ -2,46 +2,75 @@
 
 **SQL Injection**
 
+---
+
 ## Formål
 
-At give praktisk erfaring med, hvordan usikker håndtering af brugerinput kan føre til SQL Injection, og hvordan man kan forebygge det gennem *parameteriserede forespørgsler* og gode designvalg.
+At give praktisk erfaring med, hvordan usikker håndtering af brugerinput kan føre til SQL Injection, og hvordan man kan forebygge det gennem *parameteriserede forespørgsler* og gode designvalg.  
+
+Øvelsen understøtter læringsmålene i faget *Sikkerhed for udviklere*【193】, hvor de studerende skal kunne:
+
+- Identificere og håndtere sårbarheder i programmer  
+- Anvende security design principles inkl. *security by design*  
+- Sikkerhedsvurdere og teste softwarearkitekturer  
 
 ---
 
 ## Opgave
 
-1. I dette repository findes kodeeksempler i **Node.js/Express** og **ASP.NET Core**.
-2. Start med at læse koden og identificér, hvorfor den er sårbar.
-3. Ret koden, så den bruger **parameteriserede forespørgsler** i stedet for at bygge SQL-strings direkte.
-4. Tilføj evt. en simpel inputvalidering (fx: søgeterm skal være 2–50 tegn).
-5. Test jeres løsning:
-
-   - Normal søgning (fx `Kill`).
-   - Ondsindet input (fx `'; DELETE FROM books; --`).
-   - Diskutér forskellen på output i usikker vs. sikker version.
+1. I dette repository findes kodeeksempler i **Node.js/Express** og **ASP.NET Core**.  
+2. I får udleveret en færdig database (`books.db`).  
+3. Start med at læse koden og identificér, hvorfor den er sårbar.  
+4. Ret koden, så den bruger **parameteriserede forespørgsler** i stedet for at bygge SQL-strings direkte.  
+5. Tilføj evt. en simpel inputvalidering (fx: søgeterm skal være 2–50 tegn).  
+6. Test jeres løsning:  
+   - Normal søgning (fx `Kill`)  
+   - Ondsindet input (fx `' OR '1'='1' --`)  
+   - UNION-angreb (fx `' UNION ALL SELECT username, password FROM users --`)  
+   - Diskutér forskellen på output i usikker vs. sikker version  
 
 ---
 
 ## Output
 
-- En fungerende version af koden med parameteriserede forespørgsler.
-- En kort note (2–3 linjer) om, hvordan I sikrer, at problemet ikke opstår i jeres design fremover.
+- En fungerende version af koden med parameteriserede forespørgsler  
+- En kort note (2–3 linjer) om, hvordan I sikrer, at problemet ikke opstår i jeres design fremover  
+- En forklaring på, hvorfor parameterisering beskytter mod SQL Injection  
 
 ---
 
 ## Refleksionsspørgsmål
 
-- Hvordan kunne denne sårbarhed have været undgået, hvis sikkerhed var tænkt ind i designfasen fra starten?
-- Hvilke principper for *security by design* kan kobles til denne øvelse (fx *least privilege*, *fail securely*)?
-- Hvorfor er parameteriserede forespørgsler en bedre løsning end at forsøge at filtrere “farlige” tegn fra input?
+- Hvordan kunne denne sårbarhed have været undgået, hvis sikkerhed var tænkt ind i designfasen fra starten?  
+- Hvilke principper for *security by design* kan kobles til denne øvelse (fx *least privilege*, *fail securely*)?  
+- Hvorfor er parameteriserede forespørgsler en bedre løsning end at forsøge at filtrere “farlige” tegn fra input?  
+- Hvordan er brugen af string-concatenation i SQL et eksempel på *insecure design*?  
 
 ---
 
-## Læringsmål (kobling til faget *Sikkerhed for udviklere*)
+## Læringsmål (kobling til faget *Sikkerhed for udviklere*)【193】
 
 Efter øvelsen skal du kunne:
 
-- **Identificere** en klassisk SQL Injection-sårbarhed i kode.
-- **Implementere** en sikker løsning med parameteriserede forespørgsler.
-- **Diskutere** hvordan usikkert design kan føre til alvorlige fejl.
-- **Anvende** principper for *security by design* i dit eget arbejde.
+- **Identificere** en klassisk SQL Injection-sårbarhed i kode  
+- **Implementere** en sikker løsning med parameteriserede forespørgsler  
+- **Diskutere** hvordan usikkert design kan føre til alvorlige fejl  
+- **Anvende** principper for *security by design* i dit eget arbejde  
+
+---
+
+## Cheat Sheet: Typiske SQL Injection Payloads
+
+Disse payloads kan bruges i den **usikre version** af koden.  
+*(OBS: Den sikre version med parameterisering er immun over for dem.)*
+
+| Payload | Effekt |
+|---------|--------|
+| `' OR '1'='1' --` | Tautologi: returnerer alle rækker fra tabellen |
+| `' UNION ALL SELECT username, password FROM users --` | UNION-angreb: eksfiltrerer data fra `users`-tabellen |
+| `%' UNION SELECT 'X','Y' --` | Tester kolonneantal ved at tilføje dummy-værdier |
+| `'; DELETE FROM books; --` | Forsøg på destruktiv injection (virker kun med drivere, der tillader flere statements) |
+
+👉 Husk: **Parameterisering** betyder, at input behandles som *data* og aldrig kan ændre SQL-strukturen.
+
+---
