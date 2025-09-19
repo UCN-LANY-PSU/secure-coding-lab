@@ -28,9 +28,9 @@ if (!db.prepare("SELECT 1 FROM books LIMIT 1").get()) {
 }
 const seed_users = db.prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
 if (!db.prepare("SELECT 1 FROM users LIMIT 1").get()) {
-  seed_users.run("admin", "hashed_password_123");
-  seed_users.run("alice", "hashed_super_strong_password");
-  seed_users.run("bob", "hashed_bob_password");
+  seed_users.run("admin", "482c811da5d5b4bc6d497ffa98491e38");
+  seed_users.run("alice", "68b08847ad96dcd958117d03828ee75c");
+  seed_users.run("bob",   "12b141f35d58b8b3a46eea65e6ac179e");
 }
 
 app.get("/search", (req, res) => {

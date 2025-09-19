@@ -49,7 +49,7 @@ using (var scope = app.Services.CreateScope())
             new[] {
                 new { t = "admin", a = "482c811da5d5b4bc6d497ffa98491e38" },
                 new { t = "alice", a = "68b08847ad96dcd958117d03828ee75c" },
-                new { t = "bob", a = "12b141f35d58b8b3a46eea65e6ac179e" }
+                new { t = "bob", a =   "12b141f35d58b8b3a46eea65e6ac179e" }
             });
     }
 }
