@@ -76,7 +76,7 @@ docker build -t secure-coding-lab-aspnet .
 2. Kør container
 
 ```bash
-docker run --rm -p 8080:8080 secure-search-aspnet
+docker run --rm -p 8080:8080 secure-coding-lab-aspnet
 ```
 
 3. Test
