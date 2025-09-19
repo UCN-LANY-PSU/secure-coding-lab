@@ -81,15 +81,11 @@ docker run --rm -p 8080:8080 secure-coding-lab-aspnet
 
 3. Test
 
-```bash
+**Sikker route**:
+http://localhost:8080/search?term=Kill
 
-# Sikker route (parameteriseret)
-curl -k "http://localhost:8080/search?term=Kill"
-
-# (Hvis udkommenteret i koden) Usikker route:
-curl -k "http://localhost:8080/search-insecure?term='%20UNION%20ALL%20SELECT%20username%2C%20password%20FROM%20users%20--%20"
-
-```
+**SQLi payload**:
+http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --
 
 
 
