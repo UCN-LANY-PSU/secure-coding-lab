@@ -85,7 +85,7 @@ docker run --rm -p 8080:8080 secure-coding-lab-aspnet
    http://localhost:8080/search?term=Kill
 
    **SQLi payload**:
-   (http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --)[http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --]
+   [http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --](http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --)
 
 
 ## Cheat Sheet: Typiske SQL Injection Payloads
