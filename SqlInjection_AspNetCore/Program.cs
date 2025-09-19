@@ -47,9 +47,9 @@ using (var scope = app.Services.CreateScope())
     {
         db.Execute("INSERT INTO users (username, password_hash) VALUES (@t,@a)",
             new[] {
-                new { t = "admin", a = "password123" },
-                new { t = "alice", a = "super_strong_password" },
-                new { t = "bob", a = "bobspassword" }
+                new { t = "admin", a = "482c811da5d5b4bc6d497ffa98491e38" },
+                new { t = "alice", a = "68b08847ad96dcd958117d03828ee75c" },
+                new { t = "bob", a = "12b141f35d58b8b3a46eea65e6ac179e" }
             });
     }
 }
@@ -57,7 +57,7 @@ using (var scope = app.Services.CreateScope())
 app.MapGet("/search", async (string term, IDbConnection db) =>
 {
     var sql = $"SELECT title, author FROM books WHERE title LIKE '%{term}%'";
-    var rows = await db.QueryAsync(sql); // sårbar for SQLi
+    var rows = await db.QueryAsync(sql); 
     return Results.Ok(rows);
 });
 
