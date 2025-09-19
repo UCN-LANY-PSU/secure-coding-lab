@@ -82,11 +82,15 @@ docker run --rm -p 8080:8080 secure-coding-lab-aspnet
 3. Test
 
    **Sikker route**:
+   
+   ```bash
    http://localhost:8080/search?term=Kill
-
+   ```
    **SQLi payload**:
-   (http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --)
-
+   
+   ```bash
+   http://localhost:8080/search?term=' UNION ALL SELECT username, password_hash FROM users; --
+   ```
 
 ## Cheat Sheet: Typiske SQL Injection Payloads
 
