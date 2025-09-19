@@ -59,6 +59,41 @@ Efter øvelsen skal du kunne:
 
 ---
 
+## Sådan kører du eksemplerne
+
+### A. Node.js/Express
+
+
+
+### B. ASP.NET Core (Minimal API)
+
+1. Byg image
+
+```bash
+docker build -t secure-coding-lab-aspnet .
+```
+
+2. Kør container
+
+```bash
+docker run --rm -p 8080:8080 secure-search-aspnet
+```
+
+3. Test
+
+```bash
+
+# Sikker route (parameteriseret)
+curl -k "http://localhost:8080/search?term=Kill"
+
+# (Hvis udkommenteret i koden) Usikker route:
+curl -k "http://localhost:8080/search-insecure?term='%20UNION%20ALL%20SELECT%20username%2C%20password%20FROM%20users%20--%20"
+
+```
+
+
+
+
 ## Cheat Sheet: Typiske SQL Injection Payloads
 
 Disse payloads kan bruges i den **usikre version** af koden.  
