@@ -61,22 +61,16 @@ Efter øvelsen skal du kunne:
 
 ## Sådan kører du eksemplerne
 
-### A. Node.js/Express
-
-
-
-### B. ASP.NET Core (Minimal API)
-
 1. Byg image
 
 ```bash
-docker build -t secure-coding-lab-aspnet .
+docker build -t secure-coding-lab .
 ```
 
 2. Kør container
 
 ```bash
-docker run --rm -p 8080:8080 secure-coding-lab-aspnet
+docker run --rm -p 8080:8080 secure-coding-lab
 ```
 
 3. Test
